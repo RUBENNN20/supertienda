@@ -6,81 +6,101 @@ class RegisterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.lightBlue[100], // Azul cielo
-      appBar: AppBar(
-        title: const Text('Registro'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text(
-                'Registro',
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+      appBar: null, // Elimina la barra superior
+      backgroundColor: Colors.lightBlue[100],
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              'Registro',
+              style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
               ),
-              const SizedBox(height: 30),
-              TextField(
+            ),
+            const SizedBox(height: 30),
+            // Campo de nombre
+            Container(
+              width: 300,
+              child: TextField(
                 decoration: InputDecoration(
-                  labelText: 'Nombre',
+                  hintText: 'Nombre',
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
                   ),
                 ),
               ),
-              const SizedBox(height: 20),
-              TextField(
+            ),
+            const SizedBox(height: 20),
+            // Campo de apellido
+            Container(
+              width: 300,
+              child: TextField(
                 decoration: InputDecoration(
-                  labelText: 'Apellido',
+                  hintText: 'Apellido',
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
                   ),
                 ),
               ),
-              const SizedBox(height: 20),
-              TextField(
+            ),
+            const SizedBox(height: 20),
+            // Campo de correo electrónico
+            Container(
+              width: 300,
+              child: TextField(
                 decoration: InputDecoration(
-                  labelText: 'Correo Electrónico',
+                  hintText: 'Correo electrónico',
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
                   ),
                 ),
               ),
-              const SizedBox(height: 20),
-              TextField(
-                decoration: InputDecoration(
-                  labelText: 'Contraseña',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                ),
+            ),
+            const SizedBox(height: 20),
+            // Campo de contraseña
+            Container(
+              width: 300,
+              child: TextField(
                 obscureText: true,
-              ),
-              const SizedBox(height: 20),
-              TextField(
                 decoration: InputDecoration(
-                  labelText: 'Confirmar Contraseña',
+                  hintText: 'Contraseña',
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
                   ),
                 ),
-                obscureText: true,
               ),
-              const SizedBox(height: 30),
-              ElevatedButton(
-                onPressed: () {
-                  // Lógica de registro
-                },
-                child: const Text('Registrarme'),
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
+            ),
+            const SizedBox(height: 20),
+            // Campo de confirmación de contraseña
+            Container(
+              width: 300,
+              child: TextField(
+                obscureText: true,
+                decoration: InputDecoration(
+                  hintText: 'Confirmar contraseña',
+                  border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
                   ),
                 ),
               ),
-            ],
-          ),
+            ),
+            const SizedBox(height: 30),
+            // Botón de registrarse
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context,
+                    '/login'); // Redirige a la página de inicio de sesión
+              },
+              style: ElevatedButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+              ),
+              child: const Text('Registrarme'),
+            ),
+          ],
         ),
       ),
     );

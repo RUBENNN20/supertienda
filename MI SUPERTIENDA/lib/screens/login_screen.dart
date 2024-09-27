@@ -6,53 +6,60 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.lightBlue[100], // Azul cielo
-      appBar: AppBar(
-        title: const Text('Inicio de Sesión'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text(
-                'Inicio',
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+      appBar: null, // Elimina la barra superior
+      backgroundColor: Colors.lightBlue[100],
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              'Inicio',
+              style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
               ),
-              const SizedBox(height: 30),
-              TextField(
+            ),
+            const SizedBox(height: 30),
+            // Campo de correo electrónico
+            Container(
+              width: 300,
+              child: TextField(
                 decoration: InputDecoration(
-                  labelText: 'Correo Electrónico',
+                  hintText: 'Correo electrónico',
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
                   ),
                 ),
               ),
-              const SizedBox(height: 20),
-              TextField(
-                decoration: InputDecoration(
-                  labelText: 'Contraseña',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                ),
+            ),
+            const SizedBox(height: 20),
+            // Campo de contraseña
+            Container(
+              width: 300,
+              child: TextField(
                 obscureText: true,
-              ),
-              const SizedBox(height: 30),
-              ElevatedButton(
-                onPressed: () {
-                  // Lógica de inicio de sesión
-                },
-                child: const Text('Ingresar'),
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
+                decoration: InputDecoration(
+                  hintText: 'Contraseña',
+                  border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
                   ),
                 ),
               ),
-            ],
-          ),
+            ),
+            const SizedBox(height: 30),
+            // Botón de ingresar
+            ElevatedButton(
+              onPressed: () {
+                // Lógica para iniciar sesión
+              },
+              style: ElevatedButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+              ),
+              child: const Text('Ingresar'),
+            ),
+          ],
         ),
       ),
     );
