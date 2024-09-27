@@ -50,7 +50,8 @@ class LoginScreen extends StatelessWidget {
             // Botón de ingresar
             ElevatedButton(
               onPressed: () {
-                // Lógica para iniciar sesión
+                // Navega a la página principal
+                Navigator.pushNamed(context, '/home');
               },
               style: ElevatedButton.styleFrom(
                 shape: RoundedRectangleBorder(
