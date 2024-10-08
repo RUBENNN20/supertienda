@@ -60,7 +60,7 @@ jobs:
           unzip sonar-scanner-cli-4.7.0.2747-linux.zip -d $HOME/.sonar/
           export PATH=$HOME/.sonar/sonar-scanner-4.7.0.2747-linux/bin:$PATH
 
-      # Paso 9: Ejecutar SonarCloud Scan
+      # Paso 9: Ejecutar SonarCloud Scann
       - name: Run SonarCloud Scan
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Necesario para PR
