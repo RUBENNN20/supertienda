@@ -171,10 +171,10 @@ class ProductCard extends StatelessWidget {
                   ),
                 );
               },
-              child: const Text('Agregar al carrito'),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.blueAccent,
               ),
+              child: const Text('Agregar al carrito'),
             ),
           ),
         ],

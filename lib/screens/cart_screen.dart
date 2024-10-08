@@ -62,7 +62,6 @@ class CartScreen extends StatelessWidget {
                         ),
                       );
                     },
-                    child: const Text('Realizar compra'),
                     style: ElevatedButton.styleFrom(
                       minimumSize: const Size.fromHeight(50), // Botón de altura fija
                       backgroundColor: Colors.green,
@@ -71,6 +70,7 @@ class CartScreen extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
+                    child: const Text('Realizar compra'),
                   ),
                 ),
               ],
