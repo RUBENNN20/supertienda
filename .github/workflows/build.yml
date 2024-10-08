@@ -55,7 +55,12 @@ jobs:
         run: flutter build apk --release  # Para Android
         # run: flutter build ios --release  # Para iOS (requiere runner macOS)
         # run: flutter build web --release  # Para Web
-
+      - name: Install Java
+        run: |
+          sudo apt update
+          sudo apt install openjdk-17-jdk -y
+          echo "JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))" >> $GITHUB_ENV
+      
       # Paso 9: Descargar SonarScanner
       - name: Download SonarScanner
         run: |
