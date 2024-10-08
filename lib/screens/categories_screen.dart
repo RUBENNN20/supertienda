@@ -68,4 +68,3 @@ class CategoryItem extends StatelessWidget {
     );
   }
 }
-

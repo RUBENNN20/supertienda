@@ -1,6 +1,6 @@
 {
-    "name": "inicio",
-    "short_name": "inicio",
+    "name": "pagina",
+    "short_name": "pagina",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
