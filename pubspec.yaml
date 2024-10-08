@@ -1,4 +1,4 @@
-name: inicio 
+name: inicio
 description: "A new Flutter project."
 publish_to: 'none' 
 version: 1.0.0+1
@@ -9,6 +9,7 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.8
+  provider: ^6.0.0
 
 dev_dependencies:
   flutter_test:
@@ -27,6 +28,23 @@ flutter:
     - assets/images/supermercado8.png
     - assets/images/supermercado9.png
     - assets/images/supermercado10.png
+    - assets/images/supermercado11.png
+    - assets/images/supermercado12.png
+
+    - assets/categorias/tecnologia.png
+    - assets/categorias/deportes.jpg
+    - assets/categorias/moda.jpg
+    - assets/categorias/hogar.jpg
+    - assets/categorias/alimentos.jpg
+    - assets/categorias/juguetes.jpg
+
+    - assets/productos/iphone16.jpg
+    - assets/productos/mac.jpg
+    - assets/productos/audifonos.jpg
+
+
   uses-material-design: true
+
+
 
  
