@@ -61,6 +61,11 @@ jobs:
           unzip sonar-scanner-cli-4.7.0.2747-linux.zip -d $HOME/.sonar/
           echo "$HOME/.sonar/sonar-scanner-4.7.0.2747-linux/bin" >> $GITHUB_PATH
 
+      - name: Set up Java 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin' 
       # Paso 10: Ejecutar SonarCloud Scan
       - name: Run SonarCloud Scan
         env:
