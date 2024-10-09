@@ -1,5 +1,3 @@
-name: SonarCloud
-
 on:
   push:
     branches:
@@ -10,21 +8,24 @@ on:
 
 jobs:
   build:
-    name: Build and analyze
+    name: Build and Analyze
     runs-on: ubuntu-latest
-    container:
-      image: cirrusci/flutter:stable  # Imagen Docker con Flutter preinstalado
+
     steps:
       # Paso 1: Checkout del código fuente
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+          fetch-depth: 0  # Deshabilita clones superficiales para una mejor relevancia del análisis
 
-      # Paso 2: Instalar jq
+      # Paso 2: Configurar Git para tratar el directorio como seguro
+      - name: Configure Git safe.directory
+        run: git config --global --add safe.directory $GITHUB_WORKSPACE
+
+      # Paso 3: Instalar jq
       - name: Install jq
         run: sudo apt-get update && sudo apt-get install -y jq
 
-      # Paso 3: Cache de paquetes de SonarCloud
+      # Paso 4: Cache de paquetes de SonarCloud
       - name: Cache SonarCloud packages
         uses: actions/cache@v4
         with:
@@ -32,35 +33,35 @@ jobs:
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
 
-      # Paso 4: Configurar Flutter
+      # Paso 5: Configurar Flutter
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.10.5'  # Especifica la versión de Flutter que usas
+          flutter-version: '3.13.0'  # Especifica la versión de Flutter que incluye Dart 3.1.0
 
-      # Paso 5: Instalar dependencias
+      # Paso 6: Instalar dependencias
       - name: Install dependencies
         run: flutter pub get
 
-      # Paso 6: Analizar el código con Flutter
+      # Paso 7: Analizar el código con Flutter
       - name: Analyze with Flutter
         run: flutter analyze
 
-      # Paso 7: Construir la aplicación Flutter
+      # Paso 8: Construir la aplicación Flutter
       # Puedes ajustar este paso según la plataforma que estés utilizando (apk, ios, web, etc.)
       - name: Build Flutter app
         run: flutter build apk --release  # Para Android
-        # run: flutter build ios --release  # Para iOS (requiere macOS runner)
+        # run: flutter build ios --release  # Para iOS (requiere runner macOS)
         # run: flutter build web --release  # Para Web
-
-      # Paso 8: Descargar SonarScanner
+      
+      # Paso 9: Descargar SonarScanner
       - name: Download SonarScanner
         run: |
           wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.7.0.2747-linux.zip
           unzip sonar-scanner-cli-4.7.0.2747-linux.zip -d $HOME/.sonar/
-          export PATH=$HOME/.sonar/sonar-scanner-4.7.0.2747-linux/bin:$PATH
+          echo "$HOME/.sonar/sonar-scanner-4.7.0.2747-linux/bin" >> $GITHUB_PATH
 
-      # Paso 9: Ejecutar SonarCloud Scan
+      # Paso 10: Ejecutar SonarCloud Scan
       - name: Run SonarCloud Scan
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Necesario para PR
