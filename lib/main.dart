@@ -4,7 +4,6 @@ import 'screens/home_screen.dart';
 import 'screens/login_screen.dart';
 import 'screens/register_screen.dart';
 import 'screens/home_page.dart'; 
-import 'screens/categories_screen.dart';
 import 'screens/offers_screen.dart';
 import 'screens/supermarkets_screen.dart';
 import 'screens/cart_screen.dart';
@@ -130,7 +129,6 @@ class MyApp extends StatelessWidget {
           '/register': (context) => const RegisterScreen(),
 
           '/home': (context) => const HomePage(),
-          '/categories': (context) => const CategoriesScreen(),
           '/offers': (context) => const OffersScreen(),
           '/supermarkets': (context) => const SupermarketsScreen(),
           '/cart': (context) => const CartScreen(),

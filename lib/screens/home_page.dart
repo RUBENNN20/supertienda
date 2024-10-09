@@ -22,13 +22,6 @@ class HomePage extends StatelessWidget {
             // Botones de las diferentes rutas
             TextButton(
               onPressed: () {
-                Navigator.pushNamed(context, '/categories');
-              },
-              child: const Text('Categorías',
-                  style: TextStyle(color: Colors.white)),
-            ),
-            TextButton(
-              onPressed: () {
                 Navigator.pushNamed(context, '/offers');
               },
               child:
