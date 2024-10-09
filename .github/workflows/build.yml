@@ -49,33 +49,27 @@ jobs:
       - name: Analyze with Flutter
         run: flutter analyze
 
-      # Paso 8: Construir la aplicación Flutter
+      # Paso 8: Configurar Java 17 usando actions/setup-java
+      - name: Set up Java 17
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+          cache: 'gradle'
+
+      # Paso 9: Ejecutar SonarCloud usando la acción oficial
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@v1
+        with:
+          organization: 'isco-utb'  # Reemplaza con tu organización en SonarCloud
+          projectKey: 'ISCOUTB_DH-MI-SUPERTIENDA'
+          projectName: 'Nombre de tu Proyecto'  # Opcional
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+      # Paso 10: Construir la aplicación Flutter
       # Puedes ajustar este paso según la plataforma que estés utilizando (apk, ios, web, etc.)
       - name: Build Flutter app
         run: flutter build apk --release  # Para Android
         # run: flutter build ios --release  # Para iOS (requiere runner macOS)
         # run: flutter build web --release  # Para Web
-      - name: Install Java
-        run: |
-          sudo apt update
-          sudo apt install openjdk-17-jdk -y
-          echo "JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))" >> $GITHUB_ENV
-      
-      # Paso 9: Descargar SonarScanner
-      - name: Download SonarScanner
-        run: |
-          wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.7.0.2747-linux.zip
-          unzip sonar-scanner-cli-4.7.0.2747-linux.zip -d $HOME/.sonar/
-          echo "$HOME/.sonar/sonar-scanner-4.7.0.2747-linux/bin" >> $GITHUB_PATH
-
-      # Paso 10: Ejecutar SonarCloud Scan
-      - name: Run SonarCloud Scan
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Necesario para PR
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: |
-          sonar-scanner \
-            -Dsonar.projectKey=ISCOUTB_DH-MI-SUPERTIENDA \
-            -Dsonar.organization=isco-utb \
-            -Dsonar.host.url=https://sonarcloud.io \
-            -Dsonar.login=$SONAR_TOKEN
