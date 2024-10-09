@@ -1,3 +1,5 @@
+name: CI/CD Pipeline
+
 on:
   push:
     branches:
@@ -53,33 +55,34 @@ jobs:
         run: flutter build apk --release  # Para Android
         # run: flutter build ios --release  # Para iOS (requiere runner macOS)
         # run: flutter build web --release  # Para Web
+
+      # Paso 9: Configurar Java 17
       - name: Set up Java 17
         uses: actions/setup-java@v3
         with:
           java-version: '17'
           distribution: 'temurin'  # Puedes especificar otra distribución si lo prefieres
+
+      # Paso 10: Verificar la versión de Java (Opcional)
       - name: Check Java version
         run: java -version
-      # **Paso Opcional: Verificar la versión de Java**
-      # Paso 9: Descargar SonarScanner
+
+      # Paso 11: Descargar SonarScanner
       - name: Download SonarScanner
         run: |
           wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.7.0.2747-linux.zip
           unzip sonar-scanner-cli-4.7.0.2747-linux.zip -d $HOME/.sonar/
           echo "$HOME/.sonar/sonar-scanner-4.7.0.2747-linux/bin" >> $GITHUB_PATH
 
-      # Paso 10: Ejecutar SonarCloud Scan
+      # Paso 12: Ejecutar SonarCloud Scan
       - name: Run SonarCloud Scan
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Necesario para PR
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
-          sonar-scanner.bat `
-            -D"sonar.organization=isco-utb" `
-            -D"sonar.projectKey=ISCOUTB_DH-MI-SUPERTIENDA" `
-            -D"sonar.sources=." `
-            -D"sonar.host.url=https://sonarcloud.io"
-
-
-          
-            
+          sonar-scanner \
+            -D"sonar.organization=isco-utb" \
+            -D"sonar.projectKey=ISCOUTB_DH-MI-SUPERTIENDA" \
+            -D"sonar.sources=." \
+            -D"sonar.host.url=https://sonarcloud.io" \
+            -D"sonar.login=${{ secrets.SONAR_TOKEN }}"
