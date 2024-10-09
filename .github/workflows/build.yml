@@ -74,7 +74,18 @@ jobs:
           unzip sonar-scanner-cli-4.7.0.2747-linux.zip -d $HOME/.sonar/
           echo "$HOME/.sonar/sonar-scanner-4.7.0.2747-linux/bin" >> $GITHUB_PATH
 
-      # Paso 12: Ejecutar SonarCloud Scan
+      # Paso 12: Verificar la instalación de SonarScanner
+      - name: Verify SonarScanner Installation
+        run: sonar-scanner --version
+
+      # Paso 13: Generar Reporte de Cobertura (Opcional)
+      - name: Generate Coverage Report
+        run: |
+          flutter test --coverage
+          sudo apt-get install -y lcov
+          lcov --capture --directory . --output-file coverage/lcov.info
+
+      # Paso 14: Ejecutar SonarCloud Scan
       - name: Run SonarCloud Scan
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Necesario para PR
@@ -84,6 +95,9 @@ jobs:
           sonar-scanner \
             -D"sonar.organization=isco-utb" \
             -D"sonar.projectKey=ISCOUTB_DH-MI-SUPERTIENDA" \
-            -D"sonar.sources=." \
+            -D"sonar.sources=lib" \
+            -D"sonar.tests=test" \
             -D"sonar.host.url=https://sonarcloud.io" \
-            -D"sonar.login=${{ secrets.SONAR_TOKEN }}"
+            -D"sonar.login=${{ secrets.SONAR_TOKEN }}" \
+            -D"sonar.coverageReportPaths=coverage/lcov.info" \
+            -D"sonar.exclusions=**/*.g.dart,**/*.freezed.dart,**/*.config.dart"
