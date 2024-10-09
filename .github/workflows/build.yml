@@ -72,3 +72,4 @@ jobs:
             -Dsonar.organization=isco-utb \
             -Dsonar.host.url=https://sonarcloud.io \
             -Dsonar.login=$SONAR_TOKEN
+            
