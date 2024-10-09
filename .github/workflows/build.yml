@@ -74,9 +74,12 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Necesario para PR
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
-          sonar-scanner \
-            -Dsonar.projectKey=ISCOUTB_DH-MI-SUPERTIENDA \
-            -Dsonar.organization=isco-utb \
-            -Dsonar.host.url=https://sonarcloud.io \
-            -Dsonar.login=$SONAR_TOKEN
+          sonar-scanner.bat `
+            -D"sonar.organization=isco-utb" `
+            -D"sonar.projectKey=ISCOUTB_DH-MI-SUPERTIENDA" `
+            -D"sonar.sources=." `
+            -D"sonar.host.url=https://sonarcloud.io"
+
+
+          
             
