@@ -23,7 +23,7 @@ jobs:
       - name: Configure Git safe.directory
         run: git config --global --add safe.directory $GITHUB_WORKSPACE
 
-      # Paso 3: Instalar jq
+      # Paso 3: Instalar jq (si es necesario para tu flujo de trabajo)
       - name: Install jq
         run: sudo apt-get update && sudo apt-get install -y jq
 
@@ -63,7 +63,7 @@ jobs:
         with:
           organization: 'isco-utb'  # Reemplaza con tu organización en SonarCloud
           projectKey: 'ISCOUTB_DH-MI-SUPERTIENDA'
-          projectName: 'Nombre de tu Proyecto'  # Opcional
+          # projectName: 'DH-MI-SUPERTIENDA'  # Opcional, se puede omitir si ya está en sonar-project.properties
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
