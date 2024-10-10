@@ -39,11 +39,17 @@ flutter:
     - assets/categorias/alimentos.jpg
     - assets/categorias/juguetes.jpg
 
-    - assets/productos/iphone16.jpg
-    - assets/productos/mac.jpg
-    - assets/productos/audifonos.jpg
-
-
+    - assets/productos/producto1.jpg
+    - assets/productos/producto2.jpg
+    - assets/productos/producto3.jpg
+    - assets/productos/producto4.jpg
+    - assets/productos/producto5.jpg
+    - assets/productos/producto6.jpg
+    - assets/productos/producto7.jpg
+    - assets/productos/producto8.jpg
+    - assets/productos/producto9.jpg
+    - assets/productos/producto10.jpg
+    
   uses-material-design: true
 
 
