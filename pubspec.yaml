@@ -19,7 +19,7 @@ dev_dependencies:
 flutter:
   assets:
     - assets/logo.png
-    - assets/fondoweb.png  
+    - assets/fondoweb.jpg  
     - assets/images/supermercado1.png
     - assets/images/supermercado2.png
     - assets/images/supermercado3.png

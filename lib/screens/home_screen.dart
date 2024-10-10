@@ -12,7 +12,7 @@ class HomeScreen extends StatelessWidget {
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/fondoweb.png'),
+                image: AssetImage('assets/fondoweb.jpg'),
                 fit: BoxFit
                     .cover, // Ajustamos la imagen al tamaño de la pantalla
               ),
@@ -25,8 +25,7 @@ class HomeScreen extends StatelessWidget {
               height: 500, // Hacemos el rectángulo más largo
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
-                color:
-                    Colors.white.withOpacity(0.9), // Fondo blanco con opacidad
+                color: Colors.white, // Fondo blanco sólido
                 borderRadius: BorderRadius.circular(20),
                 boxShadow: [
                   BoxShadow(
