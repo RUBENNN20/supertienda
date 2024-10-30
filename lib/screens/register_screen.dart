@@ -119,8 +119,7 @@ class RegisterScreen extends StatelessWidget {
                   // Botón de registrarse
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.pushNamed(context,
-                          '/login'); // Redirige a la página de inicio de sesión
+                      Navigator.pushNamed(context, '/login'); // Redirige a la página de inicio de sesión
                     },
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
