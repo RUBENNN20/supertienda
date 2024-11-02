@@ -31,15 +31,15 @@ class ProfileScreen extends StatelessWidget {
                   bottomRight: Radius.circular(30),
                 ),
               ),
-              child: Column(
+              child: const Column(
                 children: [
                   // Foto de perfil
-                  const CircleAvatar(
+                  CircleAvatar(
                     radius: 50,
                     backgroundImage: AssetImage('assets/profile.jpg'), // Ruta de la imagen de perfil
                   ),
-                  const SizedBox(height: 10),
-                  const Text(
+                  SizedBox(height: 10),
+                  Text(
                     'User',
                     style: TextStyle(
                       color: Colors.white,
@@ -47,17 +47,17 @@ class ProfileScreen extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  const Text(
+                  Text(
                     'User@gmail.com',
                     style: TextStyle(
                       color: Colors.white70,
                     ),
                   ),
-                  const SizedBox(height: 15),
+                  SizedBox(height: 15),
                   // Insignias
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
+                    children: [
                       Icon(Icons.verified, color: Colors.yellow, size: 20),
                       SizedBox(width: 5),
                       Icon(Icons.star, color: Colors.purple, size: 30),
