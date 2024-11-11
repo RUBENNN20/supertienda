@@ -13,30 +13,32 @@ class RegisterScreen extends StatelessWidget {
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage(
-                    'assets/fondoweb.jpg'), // Asegúrate de que el nombre del archivo sea correcto
-                fit: BoxFit
-                    .cover, // Ajustamos la imagen al tamaño de la pantalla
+                image: AssetImage('assets/fondoweb.jpg'),
+                fit: BoxFit.cover, // Ajustamos la imagen al tamaño de la pantalla
               ),
             ),
           ),
-          // Rectángulo flotante con campos y botón
+          // Rectángulo flotante con campos de registro y botón
           Center(
             child: Container(
               width: 300,
               height: 600, // Ajustamos la altura del rectángulo
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
-                color: Colors.white, // Fondo blanco sólido
+                color: Colors.white.withOpacity(0.8), // Fondo blanco semitransparente
                 borderRadius: BorderRadius.circular(20),
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black26, // Sombra
-                    blurRadius: 10,
+                    blurRadius: 15,
                     spreadRadius: 5,
-                    offset: Offset(0, 3),
+                    offset: Offset(0, 5),
                   ),
                 ],
+                border: Border.all(
+                  color: Colors.grey.withOpacity(0.5), // Borde sutil
+                  width: 1,
+                ),
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -51,7 +53,7 @@ class RegisterScreen extends StatelessWidget {
                   const SizedBox(height: 30),
                   // Campo de nombre
                   SizedBox(
-                    width: 300,
+                    width: 250,
                     child: TextField(
                       decoration: InputDecoration(
                         hintText: 'Nombre',
@@ -64,7 +66,7 @@ class RegisterScreen extends StatelessWidget {
                   const SizedBox(height: 20),
                   // Campo de apellido
                   SizedBox(
-                    width: 300,
+                    width: 250,
                     child: TextField(
                       decoration: InputDecoration(
                         hintText: 'Apellido',
@@ -77,7 +79,7 @@ class RegisterScreen extends StatelessWidget {
                   const SizedBox(height: 20),
                   // Campo de correo electrónico
                   SizedBox(
-                    width: 300,
+                    width: 250,
                     child: TextField(
                       decoration: InputDecoration(
                         hintText: 'Correo electrónico',
@@ -90,7 +92,7 @@ class RegisterScreen extends StatelessWidget {
                   const SizedBox(height: 20),
                   // Campo de contraseña
                   SizedBox(
-                    width: 300,
+                    width: 250,
                     child: TextField(
                       obscureText: true,
                       decoration: InputDecoration(
@@ -104,7 +106,7 @@ class RegisterScreen extends StatelessWidget {
                   const SizedBox(height: 20),
                   // Campo de confirmación de contraseña
                   SizedBox(
-                    width: 300,
+                    width: 250,
                     child: TextField(
                       obscureText: true,
                       decoration: InputDecoration(
@@ -119,12 +121,17 @@ class RegisterScreen extends StatelessWidget {
                   // Botón de registrarse
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.pushNamed(context,
-                          '/login'); // Redirige a la página de inicio de sesión
+                      Navigator.pushNamed(context, '/login'); // Redirige a la página de inicio de sesión
                     },
                     style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blueAccent,
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 15, horizontal: 40), // Tamaño del botón
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
+                      ),
+                      textStyle: const TextStyle(
+                        fontSize: 18, // Tamaño de texto del botón
                       ),
                     ),
                     child: const Text('Registrarme'),

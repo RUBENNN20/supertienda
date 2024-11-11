@@ -1,4 +1,3 @@
-// screens/cart_screen.dart
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/cart_provider.dart';
@@ -30,7 +29,7 @@ class CartScreen extends StatelessWidget {
                     itemBuilder: (context, index) {
                       final product = cart.items[index];
                       return ListTile(
-                        leading: Image.asset(
+                        leading: Image.network(
                           product.image,
                           width: 50,
                           height: 50,
@@ -52,8 +51,6 @@ class CartScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(16.0),
                   child: ElevatedButton(
                     onPressed: () {
-                      // Aquí puedes implementar la lógica para realizar la compra
-                      // Por ahora, simplemente limpiamos el carrito y mostramos un mensaje
                       cart.clearCart();
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
