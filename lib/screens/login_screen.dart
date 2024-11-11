@@ -26,7 +26,7 @@ class LoginScreen extends StatelessWidget {
               decoration: BoxDecoration(
                 color: Colors.white.withOpacity(0.8), // Fondo blanco semitransparente
                 borderRadius: BorderRadius.circular(20),
-                boxShadow: [
+                boxShadow: const [
                   BoxShadow(
                     color: Colors.black26, // Sombra
                     blurRadius: 15,
