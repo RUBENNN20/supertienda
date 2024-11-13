@@ -230,7 +230,6 @@ class MyApp extends StatelessWidget {
           '/hogar12': (context) => const HogarfalabellaScreen(),
           '/alimentos12': (context) => const AlimentosfalabellaScreen(),
           '/juguetes12': (context) => const JuguetesfalabellaScreen(),
-
         },
       ),
     );

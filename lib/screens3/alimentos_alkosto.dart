@@ -27,7 +27,7 @@ class _AlimentosalkostoScreenState extends State<AlimentosalkostoScreen> {
   }
 
   // Cargar los productos de una tienda y categoría específica
-Future<void> _loadProducts() async {
+  Future<void> _loadProducts() async {
   final prefs = await SharedPreferences.getInstance();
   final productListString = prefs.getString('$storeName-$categoryName') ?? '[]';
   final List<dynamic> productListJson = jsonDecode(productListString);
@@ -37,29 +37,28 @@ Future<void> _loadProducts() async {
   });
 }
 
-// Guardar los productos de una tienda y categoría específica
-Future<void> _saveProducts() async {
-  final prefs = await SharedPreferences.getInstance();
-  final List<Map<String, dynamic>> jsonList =
-      products.map((product) => product.toJson()).toList();
-  await prefs.setString('$storeName-$categoryName', jsonEncode(jsonList));
-}
+  // Guardar los productos de una tienda y categoría específica
+  Future<void> _saveProducts() async {
+    final prefs = await SharedPreferences.getInstance();
+    final List<Map<String, dynamic>> jsonList =
+        products.map((product) => product.toJson()).toList();
+    await prefs.setString('$storeName-$categoryName', jsonEncode(jsonList));
+  }
 
-// Agregar producto y guardar en SharedPreferences
-void _addProduct(String title, String imageUrl, double price) {
+  void _addProduct(String title, String imageUrl, double price) {
   setState(() {
+    // Agrega el producto con store y category
     products.add(Product(
       id: DateTime.now().toString(),
       title: title,
       image: imageUrl,
       price: price,
-      store: storeName,
-      category: categoryName,
+      store: storeName,  // Asocia el producto con la tienda
+      category: categoryName,  // Asocia el producto con la categoría
     ));
   });
-  _saveProducts(); // Guarda los productos inmediatamente después de agregar uno nuevo
+  _saveProducts(); // Guarda los productos después de agregar uno nuevo
 }
-
 
   Future<void> _showAddProductDialog() async {
     final _titleController = TextEditingController();
